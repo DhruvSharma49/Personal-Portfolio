@@ -1,43 +1,69 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import Container from "../Components/Container";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function ContactSection() {
   const formRef = useRef();
-
+  const [status, setStatus] = useState(null);
   const publickey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const templateid = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  console.log(serviceId, templateid, publickey);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        serviceId, // EmailJS Service ID
-        templateid, // EmailJS Template ID
-        formRef.current,
-        publickey // EmailJS Public Key
-      )
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          formRef.current.reset();
-        },
-        (error) => {
-          console.error(error);
-          alert("Failed to send message");
-        }
-      );
+    emailjs.sendForm(serviceId, templateid, formRef.current, publickey).then(
+      () => {
+        setStatus({
+          type: "success",
+          message: "Message sent successfully. I’ll get back to you soon!",
+        });
+        formRef.current.reset();
+        setTimeout(() => setStatus(null), 3000);
+      },
+      () => {
+        setStatus({
+          type: "error",
+          message: "Something went wrong. Please try again.",
+        });
+        setTimeout(() => setStatus(null), 3000);
+      },
+    );
   };
 
   return (
     <section id="contact" className="bg-neutral-950 py-16 text-white">
-      <Container>
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Contact
-        </h2>
+      {status && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className={`mb-6 rounded-xl px-4 py-3 text-sm font-medium
+      ${
+        status.type === "success"
+          ? "bg-green-500/10 text-green-400 border border-green-500/20"
+          : "bg-red-500/10 text-red-400 border border-red-500/20"
+      }
+    `}
+        >
+          {status.message}
+        </motion.div>
+      )}
 
-        {/* 👇 UI SAME AS YOURS */}
+      <Container>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl sm:text-5xl font-extrabold">
+            <span className="text-indigo-400"> Contact </span> Me
+          </h2>
+        </motion.div>
+
         <form
           ref={formRef}
           onSubmit={handleSubmit}
@@ -60,7 +86,7 @@ export default function ContactSection() {
               name="reply_to"
               required
               className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white"
-              placeholder="you@domain.com"
+              placeholder="you@gmail.com"
             />
           </div>
 
@@ -71,12 +97,12 @@ export default function ContactSection() {
               rows={4}
               required
               className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white"
-              placeholder="Tell me about your project"
+              placeholder="Write your message here....."
             />
           </div>
 
           <div className="sm:col-span-2">
-            <button className="w-full rounded-2xl bg-emerald-400 px-6 py-3 font-semibold text-neutral-900">
+            <button className="w-full rounded-2xl bg-rose-400/80 hover:bg-rose-400 px-6 py-3 font-semibold text-neutral-900 transition-all duration-300 hover:scale-105">
               Send
             </button>
           </div>

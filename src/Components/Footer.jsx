@@ -1,37 +1,41 @@
 import Container from "./Container";
-import { FaGithub, FaLinkedin, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowUp} from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-950 py-10 text-white/70 border-t border-white/10">
+    <footer className="bg-neutral-950/95 backdrop-blur-sm py-10 text-white/70 border-t border-white/10">
       <Container className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0 text-sm">
+        
+        {/* Left: Copyright + microcopy */}
         <p className="text-center sm:text-left">
-          © {new Date().getFullYear()} Dhruv Sharma. All rights reserved.
+          © {new Date().getFullYear()} Dhruv Sharma. Made with{" "}
+          <span className="text-red-500">❤️</span>
         </p>
 
-        {/* Right: Links */}
-        <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
           <a
-            href="https://github.com/"
+            href="https://github.com/DhruvSharma49"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1 px-3 py-1 rounded hover:bg-white/10 transition"
+            className="flex items-center gap-1 px-3 py-1 rounded hover:bg-white/10 hover:scale-110 transition transform"
           >
-            <FaGithub /> GitHub
+            <FaGithub className="text-gray-300" /> GitHub
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/dhruv-sharma-25822228a/"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1 px-3 py-1 rounded hover:bg-white/10 transition"
+            className="flex items-center gap-1 px-3 py-1 rounded hover:bg-[#0A66C2] hover:text-white hover:scale-110 transition transform"
           >
             <FaLinkedin /> LinkedIn
           </a>
 
+     
+
           <a
             href="#home"
-            className="flex items-center gap-1 px-3 py-1 rounded hover:bg-white/10 transition"
+            className="flex items-center gap-1 px-3 py-1 rounded hover:bg-white/10 hover:scale-110 transition transform"
           >
             <FaArrowUp /> Top
           </a>

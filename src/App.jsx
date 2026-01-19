@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Loading from "./Components/Loading";
-import NavBar from "./Components/NavBar";
+import NavBar from "./Components/Header";
 import HeroSection from "./Pages/LandingPage";
 import ProjectsSection from "./Pages/ProjectSection";
 import AboutSection from "./Pages/AboutSection";
 import ContactSection from "./Pages/ContactSection";
 import Footer from "./Components/Footer";
-import Skills from "./Pages/Skills";
+import Skills from "./Pages/SkillsSection";
 import LearningJourney from "./Pages/JourneySection";
 
 export default function App() {
@@ -29,8 +29,8 @@ export default function App() {
     <>
       <Loading done={loaded} />
       <main className="min-h-screen bg-neutral-950 font-sans text-white">
-        <HeroSection />
         <NavBar />
+        <HeroSection />
         <AboutSection />
         <Skills />
         <LearningJourney />
