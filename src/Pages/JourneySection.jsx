@@ -46,8 +46,8 @@ const education = [
   },
   {
     title: "BCA (Bachelor of Computer Applications)",
-    institution: "IGNOU",
-    duration: "Ongoing / 2nd Year",
+    institution: "IGNOU University Delhi",
+    duration: "",
     description:
       "Learning computer applications, programming, and system design.",
     icon: (
