@@ -110,8 +110,8 @@ const education = [
     ],
   },
   {
-    title: "Full-Stack Developer Course",
-    institution: "Lal Bahadur Shastri Training Institute",
+    title: "Full-Stack Development Course",
+    institution: "Dice Academy Delhi",
     duration: " 1 year Completed",
     description:
       "Learned modern web development with front-end, back-end, databases, and cloud services.",
