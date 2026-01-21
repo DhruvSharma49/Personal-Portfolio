@@ -18,6 +18,7 @@ export default function HeroSection() {
       "Backend Developer",
       "Frontend Developer",
       "MERN Stack Developer",
+   
     ],
     loop: 0,
     typeSpeed: 70,
@@ -30,7 +31,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative h-screen bg-gradient-to-br from-neutral-600 via-neutral-950 to-neutral-950 text-white overflow-hidden pb-[40vh]"
+      className="relative h-screen bg-gradient-to-br from-neutral-600 via-neutral-950 to-neutral-950 text-white overflow-hidden "
     >
       {/* background effect (lightweight) */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.04),transparent_60%)]" />
@@ -105,9 +106,10 @@ export default function HeroSection() {
             src={ProfilePicture}
             alt="Dhruv Sharma"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
-        
+            width="600"
+            height="800"
             className="h-[38vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] xl:h-[85vh] w-auto object-contain select-none"
           />
         </div>
